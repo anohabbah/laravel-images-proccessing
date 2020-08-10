@@ -84,4 +84,15 @@ class ProductImageStoreTest extends TestCase
         $this->assertCount(0, Asset::all());
         $this->assertCount(0, Storage::allFiles(Image::directory()));
     }
+
+    /** @test */
+    public function upload_image_and_save_assets(): void {
+        Storage::fake();
+
+        $image1 = Storage::fake()->image('image.jpg');
+        $image2 = Storage::fake()->image('image-2.png');
+
+        $this->assertCount(0, $this->product->assets);
+    }
+
 }

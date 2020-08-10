@@ -11,10 +11,23 @@ class CreateAssetsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('$assetable_id');
+            $table->string('assetable_type');
+            $table->string('type');
+            $table->string('disk', 20);
+            $table->string('visibility', 7);
+            $table->unsignedInteger('sort')->default(1);
+            $table->string('path');
+            $table->string('original_name')->nullable();
+            $table->string('extension', 8);
+            $table->string('mime')->nullable();
+            $table->unsignedBigInteger('size');
+            $table->string('caption')->nullable();
+            $table->json('variants');
             $table->timestamps();
         });
     }
@@ -24,7 +37,7 @@ class CreateAssetsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('assets');
     }
