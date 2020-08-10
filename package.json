@@ -1,0 +1,59 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^2.1.2",
+        "@vue/eslint-config-prettier": "^6.0.0",
+        "axios": "^0.19",
+        "babel-eslint": "^10.1.0",
+        "cross-env": "^7.0",
+        "eslint": "^6.8.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-vue": "^6.2.2",
+        "laravel-mix": "^5.0.1",
+        "lodash": "^4.17.13",
+        "resolve-url-loader": "^3.1.0",
+        "sass": "^1.15.2",
+        "sass-loader": "^8.0.0",
+        "tailwindcss": "^1.2.0",
+        "vue": "^2.6.11",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/recommended",
+            "eslint:recommended",
+            "@vue/prettier"
+        ],
+        "rules": {
+            "no-console": "off",
+            "no-debugger": "off",
+            "no-prototype-builtins": "off"
+        },
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": true
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ]
+}
