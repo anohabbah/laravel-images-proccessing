@@ -10,8 +10,8 @@ trait ResponseTrait
     /**
      * Get validation response.
      *
-     * @param  array $response
-     * @param  string $message
+     * @param array $response
+     * @param string|null $message
      * @return array
      */
     protected function validationError(array $response, string $message = null): array
@@ -38,7 +38,7 @@ trait ResponseTrait
     /**
      * Assert response returned 200.
      *
-     * @param  \Illuminate\Testing\TestResponse $response
+     * @param TestResponse $response
      * @return void
      */
     protected function assertResponseOk(TestResponse $response): void
@@ -49,7 +49,7 @@ trait ResponseTrait
     /**
      * Assert response returned 200 and json response.
      *
-     * @param  \Illuminate\Testing\TestResponse $response
+     * @param TestResponse $response
      * @param  array $json
      * @param  bool $useMessage
      * @return void
@@ -66,7 +66,7 @@ trait ResponseTrait
     /**
      * Assert response returned 201.
      *
-     * @param  \Illuminate\Testing\TestResponse $response
+     * @param TestResponse $response
      * @return void
      */
     protected function assertResponseCreated(TestResponse $response): void
@@ -77,7 +77,7 @@ trait ResponseTrait
     /**
      * Assert response returned 201 and json response.
      *
-     * @param  \Illuminate\Testing\TestResponse $response
+     * @param TestResponse $response
      * @param  array $json
      * @param  bool $useMessage
      * @return void
@@ -94,7 +94,7 @@ trait ResponseTrait
     /**
      * Assert response returned 422.
      *
-     * @param  \Illuminate\Testing\TestResponse $response
+     * @param TestResponse $response
      * @return void
      */
     protected function assertResponseUnprocessable(TestResponse $response): void
@@ -105,7 +105,7 @@ trait ResponseTrait
     /**
      * Assert response returned 422 and json response.
      *
-     * @param  \Illuminate\Testing\TestResponse $response
+     * @param TestResponse $response
      * @param  array $json
      * @param  bool $useMessage
      * @return void

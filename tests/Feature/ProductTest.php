@@ -15,7 +15,7 @@ class ProductTest extends TestCase
     /**
      * @test
      */
-    public function displays_product_list()
+    public function displays_product_list(): void
     {
         $products = factory(Product::class, 5)->create();
 
@@ -31,8 +31,9 @@ class ProductTest extends TestCase
     /**
      * @test
      */
-    public function displays_product_image_form()
+    public function displays_product_image_form(): void
     {
+        /** @var Product $product */
         $product = factory(Product::class)->create();
 
         $response = $this->get(route('product.view', $product->id));
