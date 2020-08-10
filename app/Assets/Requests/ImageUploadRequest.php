@@ -4,6 +4,8 @@
 namespace App\Assets\Requests;
 
 
+use App\Assets\Type\Image;
+
 trait ImageUploadRequest
 {
     use UploadRequest;
@@ -25,6 +27,6 @@ trait ImageUploadRequest
      */
     public function directory(): string
     {
-        return 'images'; // TODO
+        return Image::directory();
     }
 }
