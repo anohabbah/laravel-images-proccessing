@@ -15,7 +15,7 @@ class CreateAssetsTable extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('$assetable_id');
+            $table->foreignId('assetable_id');
             $table->string('assetable_type');
             $table->string('type');
             $table->string('disk', 20);
