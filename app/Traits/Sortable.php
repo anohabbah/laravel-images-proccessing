@@ -22,8 +22,8 @@ trait Sortable
      * @param Builder $query
      * @return Builder
      */
-    public function scopedSorted(Builder $query): Builder
+    public function scopeSorted(Builder $query): Builder
     {
-        return $query->orderBy($this->sort);
+        return $query->orderBy('sort');
     }
 }

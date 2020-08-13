@@ -36,7 +36,7 @@ class ProductImageController extends Controller
         $asset = $this->productService->saveImage(
             $product,
             $this->fileUploadService->upload($request),
-    );
+        );
 
         return new AssetResource($asset);
     }

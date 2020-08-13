@@ -27,13 +27,16 @@ class AssetRepository implements AssetRepositoryContract
         $this->processor = $processor;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function create(AssetableContract $model, string $type, UploadedAsset $file, array $variants = [], Closure $process = null): Asset
     {
         return $model->assets()->create([
             'type' => $type,
             'disk' => $file->disk,
             'visibility' => $file->visibility,
-            'sort' => $this->nextSortFor($type),
+            'sort' => $this->nextSortFor($model, $type),
             'path' => $file->path,
             'original_name' => $file->original_name,
             'extension' => $file->extension,
