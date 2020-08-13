@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use InvalidArgumentException;
+use Psr\Http\Message\StreamInterface;
 
 class ImageVariantProcessor
 {
@@ -34,6 +35,8 @@ class ImageVariantProcessor
     }
 
     /**
+     * Generates variants.
+     *
      * @param UploadedAsset $file
      * @param array $variants
      * @param Closure|null $process
@@ -41,7 +44,7 @@ class ImageVariantProcessor
      */
     public function generateVariants(UploadedAsset $file, array $variants = [], Closure $process = null): array
     {
-        if (empty($variants) || $file->mime == 'image/svg+xml') {
+        if (empty($variants) || $file->mime === 'image/svg+xml') {
             return $this->generateSoleVariants($file);
         }
 
@@ -98,7 +101,7 @@ class ImageVariantProcessor
         }
 
         /** @var Image $source */
-        $source = $callback($this->manager->make($file->path), $breakpoint);
+        $source = $callback($this->manager->make($file->file->path()), $breakpoint);
         $path = $this->store($file, $breakpoint, $source->stream());
         return new Variant($path, $file->disk);
     }
@@ -108,13 +111,13 @@ class ImageVariantProcessor
      *
      * @param UploadedAsset $file
      * @param Breakpoint $breakpoint
-     * @param \Psr\Http\Message\StreamInterface $stream
+     * @param StreamInterface $stream
      * @return string
      */
-    private function store(UploadedAsset $file, Breakpoint $breakpoint, \Psr\Http\Message\StreamInterface $stream): string
+    private function store(UploadedAsset $file, Breakpoint $breakpoint, StreamInterface $stream): string
     {
         Storage::put(
-            $filePath = $file->directory. ds() . $breakpoint->index() . '-' . $file->original_name,
+            $filePath = $file->directory . ds() . $breakpoint->index() . '-' . $file->filename,
             $stream,
             [
                 'disk' => $file->disk,

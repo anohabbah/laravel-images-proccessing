@@ -28,7 +28,7 @@ trait AssetTrait
 
         return collect($asset->variants)
             ->map(function ($variant) {
-            return $variant['url'];
+                return $variant['url'];
             })
             ->merge([$asset->url])
             ->values()
@@ -53,7 +53,7 @@ trait AssetTrait
         return collect([new Small(), new Medium(), new Large(), new XLarge()])
             ->flatMap(function (Breakpoint $breakpoint) use ($asset, $method) {
                 return [
-                    $breakpoint->index() => $this[$method]($asset, $breakpoint)
+                    $breakpoint->index() => $this->{$method}($asset, $breakpoint)
                 ];
             });
     }
@@ -86,8 +86,8 @@ trait AssetTrait
         $file = $breakpoint->index() . '-' . $path['basename'];
 
         return [
-            'path' => $path['dirname'] . '/' . $file,
-            'url' => $url['dirname'] . '/' . $file,
+            'path' => $path['dirname'] . ds() . $file,
+            'url' => $url['dirname'] . ds() . $file,
         ];
     }
 }

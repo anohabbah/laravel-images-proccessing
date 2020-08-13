@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 class Variant
 {
-    private string $path;
-    private string $url;
+    public string $path;
+    public string $url;
 
     /**
      * Variant constructor.
