@@ -30,9 +30,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+//        Route::pattern('product', '[0-9]+');
+//        Route::bind('product', function (int $productId) {
+//            return Product::with('assets')->firstOrFail($productId);
+//        });
     }
 
     /**

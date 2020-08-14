@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-
 use App\Asset;
 use App\Assets\AssetableContract;
 use App\Assets\Type\Image;
@@ -50,8 +49,17 @@ class ProductService
                 }),
                 new XLarge(function (ImageInstance $image) {
                     return $image->fit(1000, 800)->flip('v');
-                })
+                }),
             ]
         );
+    }
+
+    /**
+     * Remove product image;
+     * @param int $file
+     */
+    public function removeImage(int $file): void
+    {
+        $this->assetRepository->remove(Asset::find($file));
     }
 }

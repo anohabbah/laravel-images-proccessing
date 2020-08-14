@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Tests\Traits\AssetTrait;
 use Tests\Traits\ResponseTrait;
-use function GuzzleHttp\Promise\all;
 
 class ProductImageStoreTest extends TestCase
 {
@@ -31,11 +30,10 @@ class ProductImageStoreTest extends TestCase
             'filesystems' => [
                 'default' => 'public',
                 'max_size' => 1000,
-            ]
+            ],
         ]);
 
         $this->product = factory(Product::class)->create();
-
     }
 
     /** @test */
@@ -44,7 +42,7 @@ class ProductImageStoreTest extends TestCase
         $response = $this->postJson(route('product.store_image', $this->product->id));
 
         $this->assertResponseUnprocessableWithJson($response, [
-            'file' => [__('validation.required', ['attribute' => 'file'])]
+            'file' => [__('validation.required', ['attribute' => 'file'])],
         ]);
     }
 
@@ -54,7 +52,7 @@ class ProductImageStoreTest extends TestCase
         $response = $this->postJson(route('product.store_image', $this->product->id), ['file' => '']);
 
         $this->assertResponseUnprocessableWithJson($response, [
-            'file' => [__('validation.required', ['attribute' => 'file'])]
+            'file' => [__('validation.required', ['attribute' => 'file'])],
         ]);
     }
 
@@ -64,11 +62,11 @@ class ProductImageStoreTest extends TestCase
         Storage::fake();
 
         $response = $this->postJson(route('product.store_image', $this->product->id), [
-            'file' => UploadedFile::fake()->create('file.pdf', 1000)
+            'file' => UploadedFile::fake()->create('file.pdf', 1000),
         ]);
 
         $this->assertResponseUnprocessableWithJson($response, [
-            'file' => [__('validation.image', ['attribute' => 'file'])]
+            'file' => [__('validation.image', ['attribute' => 'file'])],
         ]);
 
         $this->assertCount(0, Asset::all());
@@ -81,11 +79,11 @@ class ProductImageStoreTest extends TestCase
         Storage::fake();
 
         $response = $this->postJson(route('product.store_image', $this->product->id), [
-            'file' => UploadedFile::fake()->create('file.jpg', 1001, 'image/jpeg')
+            'file' => UploadedFile::fake()->create('file.jpg', 1001, 'image/jpeg'),
         ]);
 
         $this->assertResponseUnprocessableWithJson($response, [
-            'file' => [__('validation.max.file', ['attribute' => 'file', 'max' => 1000])]
+            'file' => [__('validation.max.file', ['attribute' => 'file', 'max' => 1000])],
         ]);
 
         $this->assertCount(0, Asset::all());
@@ -95,6 +93,7 @@ class ProductImageStoreTest extends TestCase
     /** @test */
     public function upload_image_and_save_assets(): void
     {
+        $this->withoutExceptionHandling();
         Storage::fake();
 
         $image1 = UploadedFile::fake()->image('image.jpg');
@@ -103,7 +102,7 @@ class ProductImageStoreTest extends TestCase
         $this->assertCount(0, $this->product->assets);
 
         $response = $this->postJson(route('product.store_image', $this->product->id), [
-            'file' => $image1
+            'file' => $image1,
         ]);
         $this->product = $this->product->fresh('assets');
 
@@ -117,7 +116,7 @@ class ProductImageStoreTest extends TestCase
             'extension' => 'jpeg',
             'url' => $firstAsset->url,
             'variants' => $firstAsset->variants,
-            'preload' => $this->preload($firstAsset)
+            'preload' => $this->preload($firstAsset),
         ]);
 
         Storage::assertExists($firstAsset->path);
@@ -145,7 +144,7 @@ class ProductImageStoreTest extends TestCase
         });
 
         $response = $this->postJson(route('product.store_image', $this->product->id), [
-            'file' => $image2
+            'file' => $image2,
         ]);
         $this->product = $this->product->fresh('assets');
 
@@ -159,7 +158,7 @@ class ProductImageStoreTest extends TestCase
             'extension' => 'png',
             'url' => $secondAsset->url,
             'variants' => $secondAsset->variants,
-            'preload' => $this->preload($secondAsset)
+            'preload' => $this->preload($secondAsset),
         ]);
 
         Storage::assertExists($firstAsset->path);

@@ -3,7 +3,6 @@
 
 namespace App\Repositories\Contracts;
 
-
 use App\Asset;
 use App\Assets\AssetableContract;
 use App\Assets\UploadedAsset;
@@ -22,8 +21,13 @@ interface AssetRepositoryContract
      * @param Closure|null $process
      * @return Asset
      */
-    public function create(AssetableContract $model, string $type, UploadedAsset $file, array $variants = [],
-                           Closure $process = null): Asset;
+    public function create(
+        AssetableContract $model,
+        string $type,
+        UploadedAsset $file,
+        array $variants = [],
+        Closure $process = null
+    ): Asset;
 
     /**
      * Get next sort for a type.

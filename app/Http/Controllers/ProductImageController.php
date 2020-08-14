@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Product\RemoveImageRequest;
 use App\Http\Requests\Product\UploadImageRequest;
 use App\Http\Resources\AssetResource;
 use App\Product;
@@ -56,7 +57,7 @@ class ProductImageController extends Controller
                 if ($file->getClientMimeType() === 'image/svg+xml') {
                     return $file;
                 }
-                return $this->manager->make($file)->greyscale()->save()->basePath();
+                return $this->manager->make($file)->greyscale()->save(/*$file->hashName()*/)->basePath();
             }),
         );
 
@@ -66,10 +67,13 @@ class ProductImageController extends Controller
     /**
      * Remove image.
      *
+     * @param RemoveImageRequest $request
+     * @param Product $product
      * @return JsonResponse
      */
-    public function destroy(): JsonResponse
+    public function destroy(RemoveImageRequest $request, Product $product): JsonResponse
     {
+        $this->productService->removeImage($request->file);
         return new JsonResponse(['success' => true]);
     }
 }

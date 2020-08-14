@@ -3,7 +3,6 @@
 
 namespace App\Processors\Image;
 
-
 use App\Assets\UploadedAsset;
 use App\Assets\Variant;
 use App\Processors\Image\Breakpoints\Breakpoint;
@@ -103,6 +102,7 @@ class ImageVariantProcessor
         /** @var Image $source */
         $source = $callback($this->manager->make($file->file->path()), $breakpoint);
         $path = $this->store($file, $breakpoint, $source->stream());
+
         return new Variant($path, $file->disk);
     }
 

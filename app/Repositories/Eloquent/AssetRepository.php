@@ -3,13 +3,15 @@
 
 namespace App\Repositories\Eloquent;
 
-
 use App\Asset;
 use App\Assets\AssetableContract;
 use App\Assets\UploadedAsset;
 use App\Processors\Image\ImageVariantProcessor;
 use App\Repositories\Contracts\AssetRepositoryContract;
 use Closure;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
+use InvalidArgumentException;
 
 class AssetRepository implements AssetRepositoryContract
 {
@@ -43,7 +45,7 @@ class AssetRepository implements AssetRepositoryContract
             'mime' => $file->mime,
             'size' => $file->size,
             'caption' => $file->original_name,
-            'variants' => $file->isImage ? $this->processor->generateVariants($file, $variants, $process) : []
+            'variants' => $file->isImage ? $this->processor->generateVariants($file, $variants, $process) : [],
         ]);
     }
 
@@ -62,5 +64,29 @@ class AssetRepository implements AssetRepositoryContract
      */
     public function remove($assets): void
     {
+        if ($assets instanceof Collection) {
+            $assets->each([$this, 'removeSingleFile']);
+            Asset::whereIn('id', $assets->pluck('id'))->delete();
+        } elseif ($assets instanceof Asset) {
+            $this->removeSingleFile($assets);
+            $assets->delete();
+        } else {
+            throw new InvalidArgumentException('Argument type passed to AssetRepository#remove should be App\Asset|Illuminate\Support\Collection');
+        }
+    }
+
+    /**
+     * Deletes files.
+     *
+     * @param Asset $asset
+     * @return void
+     */
+    private function removeSingleFile(Asset $asset): void
+    {
+        Storage::disk($asset->disk)->delete($asset->path);
+
+        collect($asset->variants)->each(function (array $variant) use ($asset) {
+            Storage::disk($asset->disk)->delete($variant['path']);
+        });
     }
 }
