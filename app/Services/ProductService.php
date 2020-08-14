@@ -8,7 +8,6 @@ use App\Asset;
 use App\Assets\AssetableContract;
 use App\Assets\Type\Image;
 use App\Assets\UploadedAsset;
-use App\Processors\Image\Breakpoints\Breakpoint;
 use App\Processors\Image\Breakpoints\Large;
 use App\Processors\Image\Breakpoints\Medium;
 use App\Processors\Image\Breakpoints\Small;
@@ -40,14 +39,19 @@ class ProductService
             Image::class,
             $file,
             [
-                new Small(400,300),
-                new Medium(600, 400),
-                new Large(800, 600),
-                new XLarge(1000, 800)
-            ],
-            function (ImageInstance $image, Breakpoint $breakpoint) {
-                return $image->fit($breakpoint->width, $breakpoint->height);
-            }
+                new Small(function (ImageInstance $image) {
+                    return $image->fit(400, 300)->flip('v');
+                }),
+                new Medium(function (ImageInstance $image) {
+                    return $image->fit(600, 400)->colorize(-50, 0, 80);
+                }),
+                new Large(function (ImageInstance $image) {
+                    return $image->fit(800, 600)->flip('h');
+                }),
+                new XLarge(function (ImageInstance $image) {
+                    return $image->fit(1000, 800)->flip('v');
+                })
+            ]
         );
     }
 }
