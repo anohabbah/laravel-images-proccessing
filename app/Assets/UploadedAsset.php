@@ -3,7 +3,6 @@
 
 namespace App\Assets;
 
-
 use Illuminate\Http\UploadedFile;
 
 class UploadedAsset
@@ -13,35 +12,35 @@ class UploadedAsset
      */
     public UploadedFile $file;
 
-    /** @var string $path */
+    /** @var string */
     public string $path;
 
-    /** @var string $disk */
+    /** @var string */
     public string $disk;
 
-    /** @var string $visibility */
+    /** @var string */
     public string $visibility;
 
-    /** @var int $size */
+    /** @var int */
     public int $size;
 
-    /** @var string $extension */
+    /** @var string */
     public string $extension;
 
-    /** @var string|null $mime */
+    /** @var string|null */
     public ?string $mime;
 
-    /** @var string|null $original_name */
+    /** @var string|null */
     public ?string $original_name;
 
-    /** @var mixed|string $filename */
+    /** @var mixed|string */
     public string $filename;
 
-    /** @var mixed|string $directory */
+    /** @var mixed|string */
     public string $directory;
 
     /**
-     * @var bool $isImage
+     * @var bool
      */
     public bool $isImage;
 

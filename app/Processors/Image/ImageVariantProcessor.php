@@ -93,7 +93,7 @@ class ImageVariantProcessor
      */
     private function process(Breakpoint $breakpoint, UploadedAsset $file, ?Closure $process): Variant
     {
-        $callback = !is_null($breakpoint->process) ? $breakpoint->process : $process;
+        $callback = ! is_null($breakpoint->process) ? $breakpoint->process : $process;
 
         if (is_null($callback)) {
             throw new InvalidArgumentException('Process is missing');

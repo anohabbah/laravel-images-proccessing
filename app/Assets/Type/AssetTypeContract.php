@@ -3,7 +3,6 @@
 
 namespace App\Assets\Type;
 
-
 interface AssetTypeContract
 {
     /**

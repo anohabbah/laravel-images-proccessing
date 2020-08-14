@@ -57,6 +57,7 @@ class ProductImageController extends Controller
                 if ($file->getClientMimeType() === 'image/svg+xml') {
                     return $file;
                 }
+
                 return $this->manager->make($file)->greyscale()->save(/*$file->hashName()*/)->basePath();
             }),
         );
@@ -74,6 +75,7 @@ class ProductImageController extends Controller
     public function destroy(RemoveImageRequest $request, Product $product): JsonResponse
     {
         $this->productService->removeImage($request->file);
+
         return new JsonResponse(['success' => true]);
     }
 }

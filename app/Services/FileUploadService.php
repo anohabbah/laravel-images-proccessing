@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-
 use App\Assets\AssetUploadRequestContract;
 use App\Assets\UploadedAsset;
 use Closure;

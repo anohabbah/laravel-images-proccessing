@@ -3,7 +3,6 @@
 
 namespace App\Assets;
 
-
 use App\Asset;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 

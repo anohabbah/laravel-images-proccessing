@@ -3,10 +3,10 @@
 namespace Tests\Feature;
 
 use App\Product;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use Illuminate\Http\Response;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ProductTest extends TestCase
 {

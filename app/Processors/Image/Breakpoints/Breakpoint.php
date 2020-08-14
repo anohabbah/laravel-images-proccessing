@@ -3,7 +3,6 @@
 
 namespace App\Processors\Image\Breakpoints;
 
-
 use Closure;
 
 abstract class Breakpoint

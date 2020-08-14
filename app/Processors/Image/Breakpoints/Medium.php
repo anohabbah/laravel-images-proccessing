@@ -3,7 +3,6 @@
 
 namespace App\Processors\Image\Breakpoints;
 
-
 class Medium extends Breakpoint
 {
     /**

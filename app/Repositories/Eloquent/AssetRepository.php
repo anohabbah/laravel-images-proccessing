@@ -56,7 +56,7 @@ class AssetRepository implements AssetRepositoryContract
     {
         $last = $model->assets()->where('type', $type)->sorted()->get()->last();
 
-        return !is_null($last) ? $last->sort + 1 : 1;
+        return ! is_null($last) ? $last->sort + 1 : 1;
     }
 
     /**

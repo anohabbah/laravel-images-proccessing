@@ -30,7 +30,7 @@ class AssetResource extends JsonResource
             'url' => $this->url,
             'extension' => $this->extension,
             'variants' => $this->variants,
-            'preload' => $this->preload()
+            'preload' => $this->preload(),
         ];
     }
 

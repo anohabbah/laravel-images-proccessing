@@ -3,7 +3,6 @@
 
 namespace App\Assets;
 
-
 use Illuminate\Http\UploadedFile;
 
 interface AssetUploadRequestContract

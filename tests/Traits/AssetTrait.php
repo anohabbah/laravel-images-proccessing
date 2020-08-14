@@ -3,7 +3,6 @@
 
 namespace Tests\Traits;
 
-
 use App\Asset;
 use App\Processors\Image\Breakpoints\Breakpoint;
 use App\Processors\Image\Breakpoints\Large;
@@ -53,7 +52,7 @@ trait AssetTrait
         return collect([new Small(), new Medium(), new Large(), new XLarge()])
             ->flatMap(function (Breakpoint $breakpoint) use ($asset, $method) {
                 return [
-                    $breakpoint->index() => $this->{$method}($asset, $breakpoint)
+                    $breakpoint->index() => $this->{$method}($asset, $breakpoint),
                 ];
             });
     }

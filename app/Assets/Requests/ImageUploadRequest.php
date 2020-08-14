@@ -3,7 +3,6 @@
 
 namespace App\Assets\Requests;
 
-
 use App\Assets\Type\Image;
 
 trait ImageUploadRequest
@@ -18,7 +17,7 @@ trait ImageUploadRequest
     public function rules(): array
     {
         return [
-            $this->field() => ['required', 'image', 'max:' . config('filesystems.max_size')]
+            $this->field() => ['required', 'image', 'max:' . config('filesystems.max_size')],
         ];
     }
 

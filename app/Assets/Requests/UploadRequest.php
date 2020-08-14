@@ -3,7 +3,6 @@
 
 namespace App\Assets\Requests;
 
-
 trait UploadRequest
 {
     /**

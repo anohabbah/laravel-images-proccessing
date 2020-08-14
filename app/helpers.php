@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('ds')) {
+if (! function_exists('ds')) {
     /**
      * Return directory separator or join partials with it.
      *

@@ -3,7 +3,6 @@
 
 namespace App\Assets;
 
-
 use Illuminate\Support\Facades\Storage;
 
 class Variant

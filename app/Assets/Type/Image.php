@@ -3,7 +3,6 @@
 
 namespace App\Assets\Type;
 
-
 class Image implements AssetTypeContract
 {
 
