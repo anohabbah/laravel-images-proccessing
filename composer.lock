@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3dea200136eb684c7954441afba1e95c",
+    "content-hash": "d29ccae1d5f9f6f43770165172b61b8b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6397,6 +6397,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -6484,20 +6485,20 @@
         },
         {
             "name": "psalm/plugin-laravel",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-laravel.git",
-                "reference": "58a444c30f6710b90ac2e1fd986097df4f35806b"
+                "reference": "95761f9f385a3c758438e0daef9ba09040709a61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/58a444c30f6710b90ac2e1fd986097df4f35806b",
-                "reference": "58a444c30f6710b90ac2e1fd986097df4f35806b",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/95761f9f385a3c758438e0daef9ba09040709a61",
+                "reference": "95761f9f385a3c758438e0daef9ba09040709a61",
                 "shasum": ""
             },
             "require": {
-                "barryvdh/laravel-ide-helper": "^2.7",
+                "barryvdh/laravel-ide-helper": "^2.8.0",
                 "ext-simplexml": "*",
                 "illuminate/container": "5.8.* || ^6.0 || ^7.0",
                 "illuminate/contracts": "5.8.* || ^6.0 || ^7.0",
@@ -6506,7 +6507,7 @@
                 "illuminate/support": "5.8.* || ^6.0 || ^7.0",
                 "orchestra/testbench": "^3.8 || ^4.0 || ^5.0",
                 "php": "^7.2|^8",
-                "vimeo/psalm": "^3.11.7"
+                "vimeo/psalm": "^3.13.1"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1.6",
@@ -6541,7 +6542,7 @@
                 }
             ],
             "description": "A Laravel plugin for Psalm",
-            "time": "2020-06-22T14:35:17+00:00"
+            "time": "2020-08-15T06:58:50+00:00"
         },
         {
             "name": "scrivo/highlight.php",
@@ -7791,16 +7792,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "3.13.1",
+            "version": "3.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "afd8874a9e4562eac42a02de90e42e430c3a1db1"
+                "reference": "3538fe1955d47f6ee926c0769d71af6db08aa488"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/afd8874a9e4562eac42a02de90e42e430c3a1db1",
-                "reference": "afd8874a9e4562eac42a02de90e42e430c3a1db1",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/3538fe1955d47f6ee926c0769d71af6db08aa488",
+                "reference": "3538fe1955d47f6ee926c0769d71af6db08aa488",
                 "shasum": ""
             },
             "require": {
@@ -7817,7 +7818,7 @@
                 "felixfbecker/advanced-json-rpc": "^3.0.3",
                 "felixfbecker/language-server-protocol": "^1.4",
                 "netresearch/jsonmapper": "^1.0 || ^2.0 || ^3.0",
-                "nikic/php-parser": "4.3.* || 4.4.* || 4.5.* || 4.6.*",
+                "nikic/php-parser": "4.3.* || 4.4.* || 4.5.* || 4.6.* || ^4.8",
                 "openlss/lib-array2xml": "^1.0",
                 "php": "^7.1.3|^8",
                 "sebastian/diff": "^3.0 || ^4.0",
@@ -7833,6 +7834,7 @@
                 "bamarni/composer-bin-plugin": "^1.2",
                 "brianium/paratest": "^4.0.0",
                 "ext-curl": "*",
+                "phpdocumentor/reflection-docblock": "^4.3.4 || ^5",
                 "phpmyadmin/sql-parser": "5.1.0",
                 "phpspec/prophecy": ">=1.9.0",
                 "phpunit/phpunit": "^7.5.16 || ^8.5 || ^9.0",
@@ -7883,7 +7885,7 @@
                 "inspection",
                 "php"
             ],
-            "time": "2020-07-30T19:42:34+00:00"
+            "time": "2020-08-22T14:01:26+00:00"
         },
         {
             "name": "webmozart/assert",

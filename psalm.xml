@@ -1,20 +1,18 @@
 <?xml version="1.0"?>
 <psalm
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    errorLevel="4"
-    findUnusedVariablesAndParams="true"
     resolveFromConfigFile="true"
     useDocblockPropertyTypes="true"
+    errorLevel="6"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
     <projectFiles>
         <directory name="app"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
     </projectFiles>
-
-    <issueHandlers>
-    </issueHandlers>
-
     <plugins>
         <pluginClass class="Psalm\LaravelPlugin\Plugin"/>
     </plugins>

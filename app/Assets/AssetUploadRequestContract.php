@@ -37,10 +37,9 @@ interface AssetUploadRequestContract
 
     /**
      * Retrieve a file from request.
-     *
-     * @param null $key
-     * @param null $default
+     * @param string|null $key
+     * @param string|null $default
      * @return UploadedFile|UploadedFile[]|array|null
      */
-    public function file($key = null, $default = null);
+    public function file(string $key = null, string $default = null);
 }
